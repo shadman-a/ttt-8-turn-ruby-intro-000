@@ -34,10 +34,10 @@ def valid_move?(board, index)
 
 end
 
-def input_to_index(num)
-  new_num = num.to_i
-new_num -= 1
-return new_num
+def input_to_index(user_input)
+  index = user_input.to_i
+  index -= 1
+return index
 end
 
 def move(board, index, character = "X")
@@ -47,4 +47,12 @@ end
 
 def turn(board)
 puts "Please enter 1-9:"
+num = gets.chomp
+  index = input_to_index(num)
+  if valid_move?(board, index) == true
+    move(board, index)
+    display_board(board)
+  else
+    turn(board)
+  end
 end
